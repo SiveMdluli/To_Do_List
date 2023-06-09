@@ -29,6 +29,7 @@
     "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
+    "@hint/utils-network": "^1.0.25",
     "lodash": "^4.17.21"
   },
   "main": "webpack.config.js"
