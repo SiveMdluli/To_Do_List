@@ -19,6 +19,7 @@
     "eslint-plugin-import": "^2.27.5",
     "hint": "^2.0.0",
     "html-webpack-plugin": "^5.5.1",
+    "htmlhint": "^1.1.4",
     "style-loader": "^3.3.2",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
