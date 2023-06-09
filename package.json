@@ -32,7 +32,7 @@
   "dependencies": {
     "@hint/utils-network": "^1.0.25",
     "lodash": "^4.17.21",
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^2.6.1"
   },
   "main": "webpack.config.js"
 }
