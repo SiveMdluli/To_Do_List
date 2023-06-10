@@ -94,6 +94,7 @@ Deployment link will be available after we complete the project
 
 - [ ] Add desktop version
 - [ ] Add Clear Completed Functionality
+- [ ] Add drag and drop functionality
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
