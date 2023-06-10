@@ -5,7 +5,7 @@
 <div align="center">
     <img src="logo/To Do List.png" alt="logo" width="140"  height="auto" />
     <br/>
-  <h3><b>To Do List</b></h3>
+  <h3><b>To_Do List</b></h3>
 </div>
 
 # 📗 Table of Contents
