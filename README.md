@@ -33,6 +33,7 @@ This is a Javascript App that allows a user to add Daily To-Do Items and they ar
 1. HTML
 2. JavaScript
 3. CSS
+4. Webpack
 
 ### Tech Stack <a name="tech-stack"></a>
 
