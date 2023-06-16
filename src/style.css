@@ -86,3 +86,52 @@ li:first-child {
 .task-description {
   padding-left: 0.3rem;
 }
+
+/* Styel editing feature */
+.edit-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-input {
+  flex: 1;
+  margin-right: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #0077ff;
+  box-shadow: 0 0 0 2px #0077ff33;
+}
+
+.edit-form button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.edit-form button[type="submit"] {
+  background-color: #0077ff;
+  color: #fff;
+}
+
+.edit-form button[type="submit"]:hover {
+  background-color: #0066cc;
+}
+
+.edit-form button[type="button"] {
+  background-color: #fff;
+  color: #333;
+}
+
+.edit-form button[type="button"]:hover {
+  background-color: #f2f2f2;
+}

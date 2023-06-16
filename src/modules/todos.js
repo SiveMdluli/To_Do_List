@@ -87,22 +87,69 @@ const renderTodoList = () => {
     }
 
     function editTodo(todo) {
-      const todoIndex = todo.index;
-      input.value = todo.description;
-      addItemButton.innerText = 'Save';
+      const todoIndex = todos.indexOf(todo);
+      const taskDescription = todoList.querySelector(
+        `.task-list-item:nth-child(${todoIndex + 1}) .task-description`,
+      );
+      const currentDescription = taskDescription.textContent.trim();
+      taskDescription.innerHTML = '';
 
-      const saveItem = () => {
-        todos[todoIndex].description = input.value;
-        localStorage.setItem('todos', JSON.stringify(todos));
-        renderTodoList();
-        hideOptionsMenu();
-        addItemButton.innerText = '+';
-        addItemButton.classList.add('plus-on-edit');
-        addItemButton.removeEventListener('click', saveItem);
-      };
+      const form = document.createElement('form');
+      form.classList.add('edit-form');
+      const input = document.createElement('input');
+      input.classList.add('edit-input');
+      input.value = currentDescription;
+      form.appendChild(input);
 
-      addItemButton.addEventListener('click', saveItem);
+      const saveButton = document.createElement('button');
+      saveButton.type = 'submit';
+      saveButton.textContent = 'Save';
+      form.appendChild(saveButton);
+
+      const cancelButton = document.createElement('button');
+      cancelButton.type = 'button';
+      cancelButton.textContent = 'Cancel';
+      form.appendChild(cancelButton);
+
+      taskDescription.appendChild(form);
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newDescription = input.value.trim();
+        if (newDescription !== '') {
+          todos[todoIndex].description = newDescription;
+          localStorage.setItem('todos', JSON.stringify(todos));
+          renderTodoList();
+        }
+      });
+
+      cancelButton.addEventListener('click', () => {
+        taskDescription.innerHTML = currentDescription;
+      });
     }
+    // function editTodo(todo) {
+    //   const todoIndex = todo.index;
+    //   input.value = todo.description;
+
+    //   const saveItem = () => {
+    //     if (todoIndex >= 0 && todoIndex < todos.length) {
+    //       const newDescription = input.value.trim();
+    //       if (newDescription !== "") {
+    //         todos[todoIndex].description = newDescription; // Update item at index
+    //         localStorage.setItem("todos", JSON.stringify(todos));
+    //         renderTodoList();
+    //       }
+    //     }
+
+    //     hideOptionsMenu();
+    //     addItemButton.innerText = "+";
+    //     addItemButton.classList.add("plus-on-edit");
+    //     addItemButton.removeEventListener("click", saveItem);
+    //   };
+
+    //   addItemButton.removeEventListener("click", addItem);
+    //   addItemButton.addEventListener("click", saveItem);
+    // }
 
     const deleteTodo = (todo) => {
       const todoIndex = todos.indexOf(todo);

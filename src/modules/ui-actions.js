@@ -5,13 +5,26 @@ const addItem = (todos, input, render) => {
     return;
   }
 
-  const newTodo = {
-    description: newItemText,
-    completed: false,
-    index: todos.length,
-  };
+  const isEditing = input.classList.contains('plus-on-edit');
 
-  todos.push(newTodo);
+  if (isEditing) {
+    const todoIndex = input.dataset.editIndex;
+    if (newItemText === '') {
+      todos.splice(todoIndex, 1);
+      for (let i = todoIndex; i < todos.length; i++) {
+        todos[i].index = i;
+      }
+    } else {
+      todos[todoIndex].description = newItemText;
+    }
+    input.classList.remove('plus-on-edit');
+    input.dataset.editIndex = '';
+  } else {
+    const newTodo = { description: newItemText };
+    todos.push(newTodo);
+  }
+
+  localStorage.setItem('todos', JSON.stringify(todos));
   input.value = '';
   render();
 };
