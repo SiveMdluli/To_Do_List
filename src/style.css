@@ -106,8 +106,8 @@ li:first-child {
 
 .edit-input:focus {
   outline: none;
-  border-color: #0077ff;
-  box-shadow: 0 0 0 2px #0077ff33;
+  border-color: #07f;
+  box-shadow: 0 0 0 2px #07f3;
 }
 
 .edit-form button {
@@ -119,12 +119,12 @@ li:first-child {
 }
 
 .edit-form button[type="submit"] {
-  background-color: #0077ff;
+  background-color: #07f;
   color: #fff;
 }
 
 .edit-form button[type="submit"]:hover {
-  background-color: #0066cc;
+  background-color: #06c;
 }
 
 .edit-form button[type="button"] {
