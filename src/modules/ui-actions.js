@@ -1,7 +1,7 @@
 const addItem = (todos, input, render) => {
   const newItemText = input.value.trim();
 
-  if (newItemText === '') {
+  if (newItemText === "") {
     return;
   }
 
@@ -12,20 +12,8 @@ const addItem = (todos, input, render) => {
   };
 
   todos.push(newTodo);
-  input.value = '';
+  input.value = "";
   render();
 };
 
-const clearCompleted = (todos) => {
-  const updatedTodos = todos.filter((todo) => !todo.completed);
-
-  // Update the indexes of remaining todos
-  updatedTodos.forEach((todo, index) => {
-    todo.index = index;
-  });
-
-  localStorage.setItem('todos', JSON.stringify(updatedTodos));
-  return updatedTodos;
-};
-
-export { addItem, clearCompleted };
+export { addItem };
