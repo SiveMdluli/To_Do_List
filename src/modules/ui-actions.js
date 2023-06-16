@@ -18,6 +18,12 @@ const addItem = (todos, input, render) => {
 
 const clearCompleted = (todos) => {
   const updatedTodos = todos.filter((todo) => !todo.completed);
+
+  // Update the indexes of remaining todos
+  updatedTodos.forEach((todo, index) => {
+    todo.index = index;
+  });
+
   localStorage.setItem('todos', JSON.stringify(updatedTodos));
   return updatedTodos;
 };

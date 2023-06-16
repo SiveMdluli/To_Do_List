@@ -131,6 +131,12 @@ const renderTodoList = () => {
     const deleteTodo = (todo) => {
       const todoIndex = todos.indexOf(todo);
       todos.splice(todoIndex, 1);
+
+      // Update the indexes of remaining todos
+      for (let i = todoIndex; i < todos.length; i++) {
+        todos[i].index = i;
+      }
+
       localStorage.setItem('todos', JSON.stringify(todos));
       renderTodoList();
     };
