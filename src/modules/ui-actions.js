@@ -8,7 +8,7 @@ const addItem = (todos, input, render) => {
   const newTodo = {
     description: newItemText,
     completed: false,
-    index: todos.length,
+    index: todos.length + 1,
   };
 
   todos.push(newTodo);
@@ -16,4 +16,16 @@ const addItem = (todos, input, render) => {
   render();
 };
 
-export { addItem };
+const clearCompleted = (todos, render) => {
+  const updatedTodos = todos.filter((todo) => !todo.completed);
+  todos.splice(0, todos.length, ...updatedTodos);
+
+  updatedTodos.forEach((todo, index) => {
+    todo.index = index + 1;
+  });
+
+  localStorage.setItem('todos', JSON.stringify(updatedTodos));
+  render(updatedTodos);
+};
+
+export { addItem, clearCompleted };
