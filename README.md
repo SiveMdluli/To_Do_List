@@ -14,6 +14,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -49,6 +50,14 @@ This is a Javascript App that allows a user to add Daily To-Do Items and they ar
 ### Key Features <a name="key-features"></a>
 
 - Add To Do Items and Remove them From List at Will
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo Link](https://sivemdluli.github.io/To_Do_List/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
