@@ -43,14 +43,12 @@ const renderTodoList = () => {
     icon.classList.add("fas", "fa-ellipsis-v");
     icon.style.color = "#c8ccd0";
 
-    // Add an event listener to the icon
     icon.addEventListener("click", (e) => {
       showOptionsMenu(e);
     });
 
     function showOptionsMenu(e) {
       const optionsMenus = document.querySelectorAll(".options-menu");
-      // Hide all other options menus
       optionsMenus.forEach((menu) => {
         if (menu !== e.target.querySelector(".options-menu")) {
           menu.remove();
@@ -132,7 +130,6 @@ const renderTodoList = () => {
       const todoIndex = todos.indexOf(todo);
       todos.splice(todoIndex, 1);
 
-      // Update the indexes of remaining todos
       for (let i = todoIndex; i < todos.length; i++) {
         todos[i].index = i + 1;
       }
@@ -149,6 +146,7 @@ const renderTodoList = () => {
     todosListItem.appendChild(checkboxWrapper);
     todosListItem.appendChild(taskDescription);
     todosListItem.appendChild(icon);
+    todosListItem.draggable = true;
     todoList.appendChild(todosListItem);
   });
 

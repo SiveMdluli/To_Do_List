@@ -18,9 +18,8 @@ const addItem = (todos, input, render) => {
 
 const clearCompleted = (todos, render) => {
   const updatedTodos = todos.filter((todo) => !todo.completed);
-  todos.splice(0, todos.length, ...updatedTodos); // Replace the entire array with updatedTodos
+  todos.splice(0, todos.length, ...updatedTodos);
 
-  // Update the indexes of remaining todos
   updatedTodos.forEach((todo, index) => {
     todo.index = index + 1;
   });
