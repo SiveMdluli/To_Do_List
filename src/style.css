@@ -86,3 +86,52 @@ li:first-child {
 .task-description {
   padding-left: 0.3rem;
 }
+
+/* Style the editing area */
+.edit-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-input {
+  flex: 1;
+  margin-right: 8px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #07f;
+  box-shadow: 0 0 0 2px #07f3;
+}
+
+.edit-form button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.edit-form button[type="submit"] {
+  background-color: #07f;
+  color: #fff;
+}
+
+.edit-form button[type="submit"]:hover {
+  background-color: #06c;
+}
+
+.edit-form button[type="button"] {
+  background-color: #fff;
+  color: #333;
+}
+
+.edit-form button[type="button"]:hover {
+  background-color: #f2f2f2;
+}

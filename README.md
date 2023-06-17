@@ -26,13 +26,14 @@
 
 # 📖 Mobile First Project <a name="about-project"></a>
 
-This is a Javascript WebApp that allows a user to add Daily To-Do Items and they are stored in local storage. The user is also able to remove completed items from the added list.
+This is a Javascript App that allows a user to add Daily To-Do Items and they are stored in local storage. The user is also able to remove completed items from the added list.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 1. HTML
 2. JavaScript
 3. CSS
+4. Webpack
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -93,6 +94,7 @@ Deployment link will be available after we complete the project
 
 - [ ] Add desktop version
 - [ ] Add Clear Completed Functionality
+- [ ] Add drag and drop functionality
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -120,6 +122,6 @@ If you like this project just give me a star ⭐️!
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://opensource.org/license/mit/) licensed.
+This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

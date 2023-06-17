@@ -1,5 +1,3 @@
-// import _ from 'lodash';
-
 const addItem = (todos, input, render) => {
   const newItemText = input.value.trim();
 
@@ -18,9 +16,4 @@ const addItem = (todos, input, render) => {
   render();
 };
 
-const clearCompleted = (todos, render) => {
-  todos = todos.filter((todo) => !todo.completed);
-  render();
-};
-
-export { addItem, clearCompleted };
+export { addItem };

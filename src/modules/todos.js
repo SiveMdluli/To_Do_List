@@ -1,32 +1,17 @@
-// import _ from 'lodash';
-import { clearCompletedButton } from './ui.js';
-
-const todos = [
-  {
-    description:
-      'Create a dance style to scynchonously jam to the sound of a washing machine.',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Program a script that can translate thoughts into code.',
-    completed: true,
-    index: 1,
-  },
-  {
-    description:
-      'Create an app that generates random programming pickup lines.',
-    completed: false,
-    index: 2,
-  },
-];
+import { addItem } from './ui-actions.js';
 
 const todoList = document.getElementById('todo-list');
+const input = document.getElementById('new-item-input');
+const addItemButton = document.getElementById('add-item-button');
+
+const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
 const renderTodoList = () => {
   todoList.innerHTML = '';
 
-  todos.forEach((todo) => {
+  todos.forEach((todo, index) => {
+    todo.index = index + 1;
+
     const todosListItem = document.createElement('li');
     todosListItem.classList.add('task-list-item');
 
@@ -48,12 +33,117 @@ const renderTodoList = () => {
     const taskDescription = document.createElement('span');
     taskDescription.classList.add('task-description');
     taskDescription.textContent = todo.description;
+
     if (todo.completed) {
       taskDescription.classList.add('completed');
     }
+
     const icon = document.createElement('span');
     icon.classList.add('fas', 'fa-ellipsis-v');
     icon.style.color = '#c8ccd0';
+
+    // Add an event listener to the icon
+    icon.addEventListener('click', (e) => {
+      showOptionsMenu(e);
+    });
+
+    function showOptionsMenu(e) {
+      const optionsMenus = document.querySelectorAll('.options-menu');
+      // Hide all other options menus
+      optionsMenus.forEach((menu) => {
+        if (menu !== e.target.querySelector('.options-menu')) {
+          menu.remove();
+        }
+      });
+
+      const optionsMenu = document.createElement('div');
+      optionsMenu.classList.add('options-menu');
+
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.addEventListener('click', () => {
+        editTodo(todo);
+        hideOptionsMenu();
+      });
+
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        deleteTodo(todo);
+        hideOptionsMenu();
+      });
+
+      optionsMenu.appendChild(editButton);
+      optionsMenu.appendChild(deleteButton);
+      e.target.appendChild(optionsMenu);
+    }
+
+    function hideOptionsMenu() {
+      const optionsMenu = document.querySelector('.options-menu');
+      if (optionsMenu !== null) {
+        optionsMenu.remove();
+      }
+    }
+
+    function editTodo(todo) {
+      const todoIndex = todos.indexOf(todo);
+      const taskDescription = todoList.querySelector(
+        `.task-list-item:nth-child(${todoIndex + 1}) .task-description`,
+      );
+      const currentDescription = taskDescription.textContent.trim();
+      taskDescription.innerHTML = '';
+
+      const form = document.createElement('form');
+      form.classList.add('edit-form');
+      const input = document.createElement('input');
+      input.classList.add('edit-input');
+      input.value = currentDescription;
+      form.appendChild(input);
+
+      const saveButton = document.createElement('button');
+      saveButton.type = 'submit';
+      saveButton.textContent = 'Save';
+      form.appendChild(saveButton);
+
+      const cancelButton = document.createElement('button');
+      cancelButton.type = 'button';
+      cancelButton.textContent = 'Cancel';
+      form.appendChild(cancelButton);
+
+      taskDescription.appendChild(form);
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newDescription = input.value.trim();
+        if (newDescription !== '') {
+          todos[todoIndex].description = newDescription;
+          localStorage.setItem('todos', JSON.stringify(todos));
+          renderTodoList();
+        }
+      });
+
+      cancelButton.addEventListener('click', () => {
+        taskDescription.innerHTML = currentDescription;
+      });
+    }
+
+    const deleteTodo = (todo) => {
+      const todoIndex = todos.indexOf(todo);
+      todos.splice(todoIndex, 1);
+
+      // Update the indexes of remaining todos
+      for (let i = todoIndex; i < todos.length; i++) {
+        todos[i].index = i + 1;
+      }
+
+      localStorage.setItem('todos', JSON.stringify(todos));
+      renderTodoList();
+    };
+
+    checkbox.addEventListener('change', () => {
+      todo.completed = checkbox.checked;
+      localStorage.setItem('todos', JSON.stringify(todos));
+    });
 
     todosListItem.appendChild(checkboxWrapper);
     todosListItem.appendChild(taskDescription);
@@ -61,9 +151,11 @@ const renderTodoList = () => {
     todoList.appendChild(todosListItem);
   });
 
-  clearCompletedButton.style.display = 'block';
-
   localStorage.setItem('todos', JSON.stringify(todos));
+
+  addItemButton.addEventListener('click', () => {
+    addItem(todos, input, renderTodoList);
+  });
 };
 
 export { todos, renderTodoList, todoList };
