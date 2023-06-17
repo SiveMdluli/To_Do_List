@@ -1,19 +1,38 @@
 const addItem = (todos, input, render) => {
   const newItemText = input.value.trim();
 
-  if (newItemText === '') {
+  if (newItemText === "") {
     return;
   }
 
   const newTodo = {
     description: newItemText,
     completed: false,
-    index: todos.length,
+    index: todos.length + 1,
   };
 
   todos.push(newTodo);
-  input.value = '';
+  input.value = "";
   render();
 };
 
-export { addItem };
+const clearCompleted = (todos, render) => {
+  const updatedTodos = todos.filter((todo) => !todo.completed);
+  todos.splice(0, todos.length, ...updatedTodos); // Replace the entire array with updatedTodos
+
+  // Update the indexes of remaining todos
+  updatedTodos.forEach((todo, index) => {
+    todo.index = index + 1;
+  });
+
+  localStorage.setItem("todos", JSON.stringify(updatedTodos));
+  render(updatedTodos);
+};
+
+const clearAll = (todos, render) => {
+  todos.length = 0;
+  localStorage.removeItem("todos");
+  render();
+};
+
+export { addItem, clearCompleted, clearAll };
