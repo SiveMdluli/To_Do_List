@@ -1,7 +1,7 @@
 const addItem = (todos, input, render) => {
   const newItemText = input.value.trim();
 
-  if (newItemText === "") {
+  if (newItemText === '') {
     return;
   }
 
@@ -12,7 +12,7 @@ const addItem = (todos, input, render) => {
   };
 
   todos.push(newTodo);
-  input.value = "";
+  input.value = '';
   render();
 };
 
@@ -24,14 +24,8 @@ const clearCompleted = (todos, render) => {
     todo.index = index + 1;
   });
 
-  localStorage.setItem("todos", JSON.stringify(updatedTodos));
+  localStorage.setItem('todos', JSON.stringify(updatedTodos));
   render(updatedTodos);
 };
 
-const clearAll = (todos, render) => {
-  todos.length = 0;
-  localStorage.removeItem("todos");
-  render();
-};
-
-export { addItem, clearCompleted, clearAll };
+export { addItem, clearCompleted };
